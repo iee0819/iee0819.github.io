@@ -1,0 +1,53 @@
+:root {
+    --body-color: #212023;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    color: var(--body-color);
+
+
+    background: url(../images/background01.jpg)no-repeat center center/cover;
+
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 1.6rem;
+        color: var(--body-color);
+
+
+        background: url(../images/background01.jpg)no-repeat center center/cover;
+
+        /* r */
+        background: none;
+
+    }
+}
+
+.inner {
+    max-width: 141rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .inner {
+        max-width: 141rem;
+        width: 100%;
+        margin: 0 auto;
+
+        /* r */
+        margin: 0 16px;
+
+
+    }
+}
+
+.fp-watermark {
+    display: none;
+}
