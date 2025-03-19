@@ -1035,7 +1035,7 @@
         color: #fff;
         border-radius: 16px;
 
-        transform: translate(160px, 0);
+        transform: translate(148px, 0);
     }
 
     .portfolio .pt_wrap {
@@ -1134,7 +1134,7 @@
         /* r */
         left: auto;
         right: 16px;
-        bottom: 200px;
+        bottom: 100px;
         width: 100px;
         height: 172px;
 
