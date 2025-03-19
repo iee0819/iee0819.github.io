@@ -110,11 +110,8 @@ $(function () {
         })
 
 
-
-
-
     $('.wrapper').fullpage({
-        anchors: ['intro', 'portfolio01', 'portfolio02', 'portfolio03', 'portfolio04', 'portfolio05', 'training', 'profile'],
+        anchors: ['intro', 'goldendew', 'qooqoo', 'hoban', 'vogue', 'pusan_university', 'training', 'profile'],
         fixedElements: '.header,.footer,.gra_pink ',
         scrollOverflow: false,
         css3: false,
