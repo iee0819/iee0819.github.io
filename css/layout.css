@@ -1,38 +1,75 @@
 :root {
-    --body-color: #212023;
-}
+    --primary-color: #4D2875;
+    --text-color: #202124;
+    --line-color: #ddd;
+    --w-color: #fff;
+    --b-color: #dbb1d2;
 
-html {
-    font-size: 62.5%;
 }
 
 body {
-    font-size: 1.6rem;
-    color: var(--body-color);
-
-
-    background: url(../images/background01.jpg)no-repeat center center/cover;
-
+    color: var(--text-color);
 }
 
 .inner {
-    max-width: 141rem;
-    width: 100%;
+    max-width: 1440px;
     margin: 0 auto;
 }
 
-@media (max-width: 768px) {
+@media (max-width:1202px) {
     .inner {
-        max-width: 141rem;
-        width: 100%;
-        margin: 0 auto;
-
-        /* r */
         margin: 0 16px;
-
     }
 }
 
-.fp-watermark {
-    display: none;
+.default {
+    padding: 120px 0;
+}
+
+.default .title {
+    max-width: 1440px;
+    margin: 0 auto;
+    margin-bottom: 32px;
+    text-align: center;
+
+}
+
+.default .title h2 {
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.default .title p {
+    display: block;
+    margin-top: 16px;
+    line-height: 24px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+
+@media (max-width: 768px) {
+    .default {
+        padding: 80px 0;
+
+    }
+
+    .default .title {
+        max-width: 1440px;
+        margin: 0 auto;
+        margin-bottom: 32px;
+    }
+
+    .default .title h2 {
+        font-size: 40px;
+        font-weight: 600;
+    }
+
+    .default .title .desc {
+        display: block;
+        margin-top: 16px;
+        line-height: 24px;
+        font-size: 16px;
+        font-weight: 400;
+    }
 }

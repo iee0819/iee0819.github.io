@@ -6,9 +6,8 @@
     padding: 0;
 
     box-sizing: border-box;
+
 }
-
-
 
 *::before,
 *::after {
@@ -42,6 +41,7 @@ address {
 
 body {
     line-height: 1;
+    color: #333;
 }
 
 img {
@@ -51,21 +51,12 @@ img {
 
 button {
     background: transparent;
-    /* 배경색 생기는거 방지 */
     border: none;
     border: 0;
     cursor: pointer;
-    /* 버튼은 무조건 손가락모양이 생겨라 */
-
-    color: inherit;
 }
 
 p {
     line-height: 1.5;
     word-break: keep-all;
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
 }

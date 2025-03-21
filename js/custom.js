@@ -1,191 +1,89 @@
 $(function () {
-
-    const tl = gsap.timeline();
-
-    tl
-        .from('.main_visual h2', { x: 640, opacity: 0, delay: 1 })
-        .from('.main_visual p', { x: 640, opacity: 0 })
-        .from('.main_visual .me', { x: 640, opacity: 0, })
-        .to(`.me`, {
-            motionPath: {
-                path: `#p01`,
-                align: `#p01`,
-                alignOrigin: [0.5, 0.5],
-                autoRotate: true,
-
-            },
-            duration: 1,
-            duration: 10, repeat: -1
-            // delay: 0.3 * num,
-        });
-
-
-    const tl2 = gsap.timeline({
-        yoyo: true,
-        repeat: -1,
-    });
-
-
-    tl2.from('.main_visual .gra_pink', {
-        x: 200,
-        y: 800,
-        scale: 0,
-        duration: 2,
-
-        breakpoints: {
-            541: {
-                x: 500,
-                scale: 0,
-                duration: 2,
-            }
-        }
-
-    }).to('.main_visual .gra_pink', {
-        x: 300,
-        y: 300,
-        scale: 0.5,
-        duration: 3,
-
-        breakpoints: {
-            541: {
-                x: 0,
-                y: 100,
-                scale: 0.5,
-                duration: 2,
-            }
-        }
-    })
-        .to('.main_visual .gra_pink', {
-            x: 600,
-            y: 200,
-            scale: 0.5,
-            duration: 2,
-
-            breakpoints: {
-                541: {
-                    x: -700,
-                    y: -100,
-                    scale: 0.5,
-                    duration: 2,
-                }
-            }
-
-
-        })
-        .to('.main_visual .gra_pink', {
-            x: 100,
-            y: -100,
-            scale: 0.5,
-            // rotation: 720,
-            duration: 5,
-
-            breakpoints: {
-                541: {
-                    x: -1000,
-                    y: 100,
-                    scale: 1,
-                    // rotation: 720,
-                    duration: 5,
-                }
-            }
-
-        })
-        .to('.main_visual .gra_pink', {
-            x: 100,
-            y: 200,
-            scale: 1,
-            // rotation: 720,
-            duration: 5,
-
-            breakpoints: {
-                541: {
-                    x: -1000,
-                    y: 100,
-                    scale: 1,
-                    // rotation: 720,
-                    duration: 5,
-                }
-            }
-
-        })
-
-
-    $('.wrapper').fullpage({
-        anchors: ['intro', 'goldendew', 'qooqoo', 'hoban', 'vogue', 'pusan_university', 'training', 'profile'],
-        fixedElements: '.header,.footer,.gra_pink ',
-        scrollOverflow: false,
-        css3: false,
-        // responsiveWidth: 1200,
-        // responsiveWidth: 768,
-        onLeave: function (o, d, dr) {
-            let idx = d.index;
-            if (idx == 0) {
-                tl.restart();
-            }
-
-            //  슬라이드 큐브
-            // hs.slideToLoop(idx)
-
-            $('.header .side_nav li').removeClass('on');
-            $('.header .side_nav li').eq(idx).addClass('on');
-
-
+    const mvs = new Swiper('.main_visual_slide', {
+        loop: true,
+        effect: "fade",
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
         },
+        navigation: {
+            nextEl: '.main_visual .arrows .next',
+            prevEl: '.main_visual .arrows .prev',
+        },
+    });
+});
 
-        afterLoad: function (o, d, dr) {
-            let idx = d.index;
-
-            $('.section').removeClass('on');
-            $('.section').eq(idx).addClass('on');
+$(function () {
+    $(window).on('scroll', function () {
+        let sct = $(window).scrollTop();
+        if (sct > 0) {
+            $('header').addClass('on');
+        } else {
+            $('.header').removeClass('on');
         }
     });
 });
 
+$(function () {
+    $('.main_product .best_tab_menu button').on('click', function () {
+        let idx = $(this).parent().index();
+        $('.main_product .best_tab_menu button').removeClass('on');
+        $(this).addClass('on');
+        $('.main_product .best_tab_product .con').removeClass('on');
+        $('.main_product .best_tab_product .con').eq(idx).addClass('on')
+    })
+});
 
 $(function () {
-
-    $('.header .btn').on('click', function () {
-        $(this).toggleClass('on');
-        $('.header .cover_lnk').toggleClass('on');
+    const mes = new Swiper('.main_event_slide', {
+        loop: true,
+        effect: "fade",
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.main_event .arrows .next',
+            prevEl: '.main_event .arrows .prev',
+        },
     });
 
-    $('.header .cover_lnk a').on('click', function (e) {
-        let idx = $(this).parent().index();
-        $('.header .btn').removeClass('on');
-        $('.header .cover_lnk').removeClass('on');
-        e.preventDefault();
-        fullpage_api.moveTo(idx + 1);
+    const DAS = new Swiper(".main_diamond_slide", {
+        slidesPerView: 1,
+        spaceBetween: 30,
+        scrollbar: {
+            el: ".swiper-scrollbar",
+            // hide: true,
+        },
+        breakpoints: {
+            541: {
+                slidesPerView: 3,
+            }
+        }
     });
-    $('.header .side_nav li a').on('click', function (e) {
-        let idx = $(this).parent().index();
-        e.preventDefault();
-        fullpage_api.moveTo(idx + 1);
+});
+
+$(function () {
+    $('.header .mbtn').on('click', function () {
+        $('.header .gnb').toggleClass('on')
+
     });
 
-    $('.header .cover_lnk').on('wheel', function (e) {
-        e.preventDefault();
-        return false;
+    $('.header .gnb>ul>li>a').on('click', function (e) {
+        if ($(this).next().is('ul') && $('.header .gnb').hasClass('on')) {
+            e.preventDefault();
+            $('.header .gnb>ul>li ul').slideUp();
+            $(this).next().stop().slideToggle();
+        }
+
+    });
+
+    $(window).on('resize', function () {
+        let w = $(window).width();
+
+        if (w > 768) {
+            $('.header .gnb').removeClass('on');
+            $('.header .gnb>ul>li ul').removeAttr('style')
+        }
     })
 })
-
-
-// // on 붙었을때 메뉴 아이콘을 누르면 메뉴가 나와라하는거
-// $(function () {
-//     $('.header .btn').on('click', function () {
-//         $(this).toggleClass('is-active');
-//         $('.header .cover_lnk').toggleClass('on');
-//     });
-
-
-//     // 메뉴눌러서 나온거에 누르면 페이지 이동해주는거
-//     $('.header .cover_lnk a').on('click', function () {
-//         $('.header .btn').removeClass('is-active');
-//         $('.header .cover_lnk').removeClass('on');
-//     });
-
-//     // 메뉴창이 떴을때 뒤에 페이지가 휠에 작동해서 안넘어가게 하는것
-//     $('.header .cover_lnk').on('wheel', function (e) {
-//         e.preventDefault();
-//         return false;
-//     })
-// })
