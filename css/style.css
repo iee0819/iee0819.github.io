@@ -850,7 +850,7 @@
 }
 
 .portfolio .pt_wrap .mockup {
-    position: relative;
+    /* position: relative; */
     flex: 2;
     opacity: 0;
     transform: translate(200px, 0);
@@ -869,7 +869,8 @@
 }
 
 
-.portfolio .mockup .mockup_img_p {
+.portfolio .mockup_img_p {
+    position: relative;
     width: 880px;
     height: 424px;
     overflow: hidden;
@@ -889,8 +890,8 @@
 
 .portfolio .mockup_img_m {
     position: absolute;
-    bottom: 200px;
-    left: 764px;
+    top: 100px;
+    left: -80px;
     width: 200px;
     height: 356px;
     overflow: hidden;
@@ -1117,8 +1118,8 @@
 
     .portfolio .mockup_img_m {
         position: absolute;
-        bottom: 200px;
-        left: 764px;
+        top: 100px;
+        left: -80px;
         width: 200px;
         height: 356px;
         overflow: hidden;
@@ -1132,9 +1133,8 @@
         box-shadow: 0 0 24px rgba(0, 0, 0, 0.25);
 
         /* r */
-        left: auto;
-        right: 16px;
-        bottom: 100px;
+        left: 340px;
+        top: -180px;
         width: 100px;
         height: 172px;
 
